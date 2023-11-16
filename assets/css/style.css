@@ -210,7 +210,7 @@ thẻ phụ có class là subnav khác nếu công việc yêu cầu có thêm n
     margin-top: 30px;
     padding-top: 50%;
     /*  nếu đặt theo tỉ lệ % thì = 50% chieu ngang của chính no */
-    background: url('/assets/img/slider_img2.jpg') top center / cover no-repeat;
+    background: url('..img/slider_img2.jpg') top center / cover no-repeat;
     /* url: background-image , top center: vị trí background lấy ở trên và canh giữa ảnh 
     cover no-repeat: kích thước background và ko lặp lại ảnh khi thu phóng trang web */
 }
