@@ -1,0 +1,582 @@
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+/* COMMON tạo class có thể dùng chung với nhau */
+html {
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+    /* chọn font có sẵn trong thẻ font-family tránh viết ở thẻ * vì tất cả
+    chữ ko cần chỉnh font cũng sẽ thay đổi theo */
+}
+.text_white {
+    color: #fff !important;
+    /* !important: do uu tien cao nhat */
+}
+.text_center{
+    text-align: center!important;
+}
+.font_heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.mt_8px {
+    margin-top: 8px;
+    /* nếu có thẻ nào sau này cần margin-top 8px thì đặt tên class này cho thẻ đó */
+}
+.mt_16px {
+    margin-top: 16px;
+    /* nếu có thẻ nào sau này cần margin-top 16px thì đặt tên class này cho thẻ đó */
+}
+.mt_32px {
+    margin-top: 32px;
+}
+.mar_auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.pad_64px_16px {
+    padding: 64px 16px;
+}
+.row {
+    margin-left: -8px;
+    margin-right: -8px;
+    /* theo hang place_list */
+}
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+    /* tạo 1 thẻ giả thay thế thẻ div row 
+    nếu đặt ở cuối thì dùng after đầu thì before 
+    display block để bao gồm các thẻ con trong thẻ cha */
+}
+.column {
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+    /* theo cot place_item */
+}
+.column_third {
+    width: 33.33333%;
+    /* 3 cột mỗi cột 33.33333% */
+}
+
+.column_half {
+    width: 50%;
+    /* 2 cột mỗi cột 50% */
+}
+.column_full {
+    width: 100%;
+    /* 1 cot chieu dai bang 100% */
+}
+.btn {
+    color: #ddd;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 0.8rem;
+    margin-top: 15px;
+    font-weight: bold;
+    background-color: #000;
+    border: none;
+} 
+.btn:hover {
+    cursor: pointer;
+    background-color: #c22828;
+}
+
+#main {
+    overflow: hidden;
+}
+
+/* MAIN tạo từng class dùng riêng biệt */
+
+/* Phần Header */
+
+#header{
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(41, 39, 39);
+    z-index: 1;
+    /*  thêm thuộc tính z-index vào để phần Header có thể nổi lên và ko bị cuốn theo khi roll down */
+} 
+#header .search_icons,
+#header .menu_icons {
+    font-size: 16px;
+    line-height: 50px;
+    color: #fff;
+}
+#header .search_btn,
+#header .mobile_menu_btn {
+    float: right;
+    /*  cho thành phần sang phải */
+    line-height: 50px;
+    /*  cho line-height bằng size của Header */
+    padding: 0 28px;
+}
+#header .mobile_menu_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* thêm Position Absolute vào để nút Menu nằm gọn trong phần cha #Nav */
+    /* ở dạng PC và Tablet thì ẩn đi chỉ hiện khi ở dạng Mobile */
+}
+#header .search_btn:hover {
+    background-color: #f44336;
+    cursor: pointer;
+    /* con chỏ chuột sẽ thay đổi thành hình tùy biến khi hover vào 
+    thuộc tính cursor mặc định sẽ thay đổi thành phần khi ta hover vào 
+    nên k cần cho vào thuộc tính hover riêng trừ khi cần yêu cầu làm riêng*/
+}
+#header .mobile_menu_btn:hover {
+    background-color: #ccc;
+}
+#header .mobile_menu_btn:hover .menu_icons  {
+    color: #000;
+}
+
+/* Phần Navigation */
+
+#nav > li {
+    display:inline-block;
+    /* chỉ cho duy nhất thẻ cha li ở cấp 1 có thuộc tính inline-block (cùng nằm trên 1 hàng )*/
+}
+
+#nav li {
+    position: relative;
+}
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+    /* tự đông viết in hoa chữ */
+}
+/* chỉ những thẻ a con trực tiếp thuộc đúng thẻ cha li trước đó và thẻ con li cũng trực
+tiếp thuộc thẻ cha nav thì mới bị thay đổi */
+
+#nav li a {
+    display:block;
+    text-decoration:none;
+    padding: 0 22px;
+    line-height: 50px;
+    /* có thể cho thẻ nav có line-height = đúng chiều cao của thẻ HEADER 
+    với điều kiện ko thêm padding-top vào */
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover a {
+    color:rgba(0, 0, 0, 0.986);
+    background-color: rgb(251, 251, 252);
+}
+/* GIAI THCH: khi ta hover vào thẻ li con của thẻ nav thì thẻ con của thẻ li là thẻ a sẽ được hover */
+/* Thêm id nav vào trước vì nếu chỉ sử dụng 1 thẻ class subnav duy nhất thì sẽ dễ trùng với các 
+thẻ phụ có class là subnav khác nếu công việc yêu cầu có thêm nhiều thẻ subnav con khác*/
+
+#nav .subnav a{
+    color: #fff;
+    padding-left: 7.8px;
+    /* line-height: 5px; */
+ }
+
+#nav .subnav {
+    display: none;
+    position: absolute;     
+    top: 100%;
+    /* đẩy xuống cách top đúng bằng kích thước của thẻ cha (thẻ nav) chứa nó */
+    background-color: rgba(133, 134, 134, 0.959);
+    min-width: 150px;
+    /* chiều dài tối thiểu nếu có thêm content sẽ tự dài ra */
+    list-style-type: none;
+    /* bỏ dấu chấm của list style */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.541);
+    /* tạo bóng cho khung: trục X, Y, độ mờ, màu */
+}
+
+#nav li:hover .subnav{
+    display:block;
+}
+#nav {
+    line-height: 50px;
+    display: inline-block;
+    /*  thêm thuộc tính inline-block để cho nút search cùng nằm trên 1 line */
+}   
+
+
+#slider {
+    position: relative;
+    margin-top: 30px;
+    padding-top: 50%;
+    /*  nếu đặt theo tỉ lệ % thì = 50% chieu ngang của chính no */
+    background: url('/assets/img/slider_img2.jpg') top center / cover no-repeat;
+    /* url: background-image , top center: vị trí background lấy ở trên và canh giữa ảnh 
+    cover no-repeat: kích thước background và ko lặp lại ảnh khi thu phóng trang web */
+}
+
+#slider .text_content{
+    color: #fff;
+    position: absolute;
+    padding: 32px 16px;
+    bottom: 0;
+    width: 100%; /* Cách1: cho chiều rộng bằng 100% sự tự căn giữa chữ  */
+    /* left: 50%;
+       transform: translateX(-50%); 
+    Cách2: căn đầu dòng về giữa và căn giữa -50% */
+    /* left: 0; right: 0; Cách3: cho left và right bằng 0 tương dương cách1 */
+}
+
+#slider .text_heading{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;   
+    letter-spacing: 8px;
+}
+
+#slider .text_description{
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    margin: 10px 0; /* tăng khoảng cách giữa heading và description lên */
+}
+
+/* Member section */
+
+#content{
+    background-color: beige;
+}
+
+#content .about_content_section, 
+#content .member_content_section,
+#content .contact_content_section {
+    width: 800px;
+    max-width: 100%;
+    /* nếu kích thước màn hình nhỏ hơn kích thước đã set = 800px 
+    thì sẽ tự động set hình ảnh về bằng đúng kích thước mà màn hình 
+    đang hiển thị */
+    padding: 64px 16px 112px 16px;
+}
+
+#content .section_heading {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 10px ;
+    letter-spacing: 8px;
+}
+#content .section_sub_heading{
+    font-size: 15px;
+    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    opacity: 0.55; /* độ mờ cho chữ */
+    margin-top: 25px ;
+}
+#content .about_text{
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 25px ;
+}
+
+#content .member_list{
+    padding-top: 32px;
+    display: block;
+    /* có thể sử dụng float: left nhưng phải thêm overflow = hidden 
+    hoặc tạo thẻ clear css cho thẻ đó thuộc tính clear = both */
+}
+
+#content .img_name{
+    width: 184px;
+    height: 250px;
+    border-radius: 16px;
+}
+#content .member_name{
+    font-size: 15px;
+    margin: 16px 0;
+}
+#content .member_section{
+    background-color: #6d6666;
+}
+/* #content .member_content_section,
+#content .contact_content_section {
+    padding: 64px 0 116px;
+} */
+.role_list {
+    background-color: #fff;
+    margin-top: 40px;
+}
+.role_list li{
+    position: relative;
+    color: #757575;
+    font-size: 15px;
+    padding: 16px 16px;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+.role_list .role {
+    color: #ddd;
+    background-color: #f44336;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin-left: 30px;
+}
+.role_list .number_age {
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin: -3px 6px 0 0 ;
+    /* margin-top = -3px , margin-right = 6px  */
+    color: #fff;
+    line-height: 24px;
+    border-radius: 50%;
+    background-color: #474747; 
+}
+
+.place_list {
+    overflow: hidden;
+    /* vô hiệu hóa thuộc tính float ở thẻ con */
+    margin-top: 10px;
+    /* margin-top: 35px , bottom: 52px */
+}
+
+.place_item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.place_img:hover {
+    opacity: 0.6; /* ảnh sẽ mờ khi hover vào ảnh */
+}
+.place_img{
+    width: 100%;
+    /* hình ảnh bằng đúng với kích thước của thẻ chứa nó */
+    display: block;
+    border-radius: 16px;
+}
+.place_content {
+    background-color: #ccc;
+    font-size: 16px;    
+    padding: 28px 16px;
+    border-radius: 6px;
+}
+.place_heading {
+    font-size: 18px;
+    font-weight: 600;
+    width: fit-content;
+    padding: 6px 12px 6px;
+    border-radius: 16px;
+}
+.place_heading:hover {
+    color: #ccc;
+    background-color: #000;
+    cursor: pointer;
+}
+.place_time { 
+    margin: 18px 0;
+    color: #912828;
+    font-weight: bold;
+}
+.place_desc {
+    font-style: italic;
+    line-height: 1.4;
+    margin: 7.5px 0;
+}
+
+
+/* Tạo khung mua buy ticket  */
+.modal {
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*  cho cả 4 hướng = 0 để sát ra 4 hướng của trình duyệt
+    phủ kín hết màn hình do thuộc tính position=fixed đã bằng 
+    kích thước của cửa sổ trình duyệt */
+    background-color: rgba(0, 0, 0, 0.35);
+    display: none;
+    /* Hidden click buy-ticket button to show buy-ticket menu */
+}
+.modal.open_modal {
+    display: flex;
+}
+.modal_container {
+    position: relative;
+    width: 700px;
+    margin: auto;
+    background-color: #fff;
+    max-width: calc(100% - 40px);
+    /* khi thu nhỏ màn hình khung modal cũng thu nhỏ theo và 2
+    bên trái phải cách mép lần lượt là 20px + 20px = 40px */
+    min-height: 200px;
+    border-radius: 26px;
+    animation: modalFadein ease .8s;
+    /* tạo hiệu ứng chuyển động vs tên đã tạo ở keyframe 
+    tgian chuyển động 0.8s hiệu ứng ease */
+    box-shadow: 
+       0 4px 10px 0 rgba(0,0,0,0.2), 
+       0 4px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal_container i[class*="fa-"] {
+    width: 24px;
+ }
+ .modal_header {
+    padding: 32px 16px;    
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    font-family: 'themify';
+    color: #4d4545;
+}
+.modal_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 12px; /* can giua nut close nhung van giu size  */
+    cursor: pointer;
+    opacity: 0.6;
+    text-align: center;
+}
+.modal_close:hover { 
+    opacity: 1;
+    background-color: rgb(223, 62, 44);
+}
+
+.modal_heading_icon {
+    margin-right: 10px;
+}
+
+.modal_body {
+    margin: 12px 16px;
+}
+
+.modal_label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 12px 0 8px ;
+    padding: 0 8px;
+    width: fit-content;
+}
+.modal_input {
+    border: 1px solid rgb(172, 39, 161);
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 0.6rem;
+    background-color: aquamarine;
+}
+.modal_input:hover, 
+#pay_tickets:hover {
+    background-color: blanchedalmond;
+    border: 1px solid saddlebrown;
+    color: #474747;
+}
+
+#pay_tickets {
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 16px 0 32px;
+    border: 1px solid rgb(172, 39, 161);
+    color: #fff;
+    background-color:aquamarine ;
+    border-radius: 0.6rem;
+}
+ 
+.modal_footer {
+    overflow: hidden;
+}
+.modal_help {
+    float: right;
+    margin: 0.6rem 1rem 1.6rem;
+}
+.modal_help a { 
+    font-size: large;
+    text-decoration: none;
+    color: #c22828;
+}
+.modal_close_button {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px;
+    margin: 0 1rem;
+    width: 6rem;
+    color: #fff;
+    background-color: rgb(223, 62, 44);
+    border-radius: 8px;
+}
+.modal_close_button:hover {
+    color: #000;
+    cursor: pointer;
+    background-color:#aaa0a0;
+}
+
+@keyframes modalFadein {
+    from {
+        transform: translateY(-140px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+/* tạo hiệu ứng cho chuyển động cho từng hình ảnh 
+giống chuyển động phim */
+
+ .contact_info {
+    font-size: 18px;
+    margin-top: 12px;
+    line-height: 1.6;
+ }
+ .contact_info i[class*="fa-"] {
+    width: 30px;
+    display: inline-block;
+    /* trong tất cả các class ở thẻ i có chứa 
+    ký tự fa- sẽ được tác động */
+ }
+ .contact_form {
+    font-size: inherit;
+    /* thừa kế font-size của thẻ cha */
+ }
+.contact_form .form_control {
+    border: 1px solid #ccc;
+    padding: 12px;
+    width: 100%;
+}
+.contact_form .btn {
+    float: right;
+}
+
+/* Footer section */
+
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+}
+#footer .footer_social_section {
+    font-size: 24px;
+}
+#footer .footer_social_section a {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+#footer .copyright {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+ }
+#footer .copyright a:hover,
+#footer .footer_social_section a:hover {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+ 
+

@@ -1,0 +1,157 @@
+/* PC */
+@media (min-width: 1024px) {
+
+    #header .mobile_menu_btn {
+        display:none;
+    }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+
+    #header .mobile_menu_btn {
+        display:none;
+    }
+
+    #content .contact_info {
+        line-height: 2;
+    }
+
+}
+
+/* Tablet & Mobile */
+@media (max-width: 1023px) {
+
+    #nav .subnav a {
+        padding: 4px 42px;
+    }
+
+    #content .form_control {
+        padding: 16px;
+    }
+
+    #content .contact_info {
+        line-height: 2;
+    }
+
+    #content .btn {
+        padding: 14px 22px ;
+    }
+
+    #footer .footer_social_section {
+        font-size: 48px;
+    }
+
+    #footer .footer_social_section a {
+        margin: 0 8px;
+    }
+
+    #footer .copyright a {
+        padding: 14px 0;
+        display: inline-block;
+    }
+
+}
+
+
+/* Mobile */
+@media (max-width: 740px) {
+    
+    /* CSS dùng chung */
+
+    .mobile_full_width,
+    .mobile_column_full {
+        width: 100% !important;
+        /* tạo 1 thẻ dùng chung chỉ khi hiển thị trên Mobile 
+        thì row và column mới hiển thị 100% */
+    }
+
+    .mobile_mt_8px {
+        margin-top: 8px !important;
+    }
+
+    .mobile_text_center {
+        text-align: center;
+    }
+    
+    /* CSS dùng riêng */
+
+    #header {
+        background-color: #000;
+        overflow: hidden;
+    }
+    /* chỉ khi ở dạng Mobile header mới có overflow hidden còn PC Tablet thì ko */
+
+    #header .search_btn {
+        display: none;
+    }
+    /* khi ở dạng Mobile nút Search bị ẩn đi */
+
+    #header .mobile_menu_btn {
+        display:block;
+    }
+    /* khi ở dạng Mobile nút Menu xuất hiện */
+
+    #nav {
+        display: block;
+    }
+    /* khi hiển thị ở Mobile thì khung menu chuyển sang thao tác dạng khối từng dòng */
+    
+    #nav li a {
+        padding: 2px 22px;
+    }
+
+    #nav > li {
+        display: block;
+    }
+    /* khi hiển thị ở Mobile thì khung menu dạng khối từng hàng */
+    
+    #nav > li:first-child {
+        display: inline-block;
+    }
+    /* lấy phần tử con đầu tiên ở phần Nav khi hiển thị ở dạng Mobile nút Home 
+    sẽ thành dạng khối 1 hàng */
+
+    #nav .subnav a {
+        padding: 4px 42px;
+        /* tạo khoảng cách left/right thể hiện thẻ con của More khi ở dạng Mobile */
+        /* tạo khoảng cách top/bottom cho thẻ con để thao tác dễ dàng khi click ở dạng Mobile 
+        ít nhất kích thước phải từ 42px - 50px để dễ thao tác khi hiển thị ở Mobile */
+        color: #fff;
+        /* đổi màu chữ và nền thuận tiện hiển thị trên Mobile */
+    }
+
+    #nav .subnav {
+        position:initial;
+        /* khi ở Mobile thì ko cần thuộc Absolute cho về Initial mặc định = 0 */
+        background-color: #333;
+    }
+
+    #content .img_name {
+        width: 68%;    
+        height: auto;    
+    }
+
+    #content .place_list {
+        margin-top: unset;
+    }
+
+    #content .place_item {
+        padding: 0 8px;
+    }
+    
+    #content .place_img {
+        padding: 0px 36px;
+        display: inline-block;
+    }
+
+    #contact .contact_info {
+        margin: 16px 0 0;
+        /* hiển thị ở dạng Mobile cách trên 1 khoảng 16px */
+    }
+
+    #contact .contact_form {
+        margin-top: 32px;
+    }
+
+}
