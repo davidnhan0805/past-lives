@@ -218,6 +218,7 @@ thẻ phụ có class là subnav khác nếu công việc yêu cầu có thêm n
 #slider .text_content{
     color: #fff;
     position: absolute;
+    text-shadow: 0 0 2px #000;
     padding: 32px 16px;
     bottom: 0;
     width: 100%; /* Cách1: cho chiều rộng bằng 100% sự tự căn giữa chữ  */
